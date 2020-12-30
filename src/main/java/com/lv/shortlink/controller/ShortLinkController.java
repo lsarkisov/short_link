@@ -33,6 +33,10 @@ public class ShortLinkController {
     }
 
     private void getShortLinkWithNoKeyword(String url) {
+        if (url.equals("q")) {
+            System.exit(1);
+        }
+
         final String keyword = ShortLinkService.generateKeyword();
 
         if (validateIfShortLinkExists(keyword)) {
