@@ -1,21 +1,12 @@
 package com.lv.shortlink.message;
 
 public class ShortLinkMessage {
-    public static final String welcomeMessage;
-    public static final String argumentValid;
-    public static final String urlValid;
-    public static final String keywordValid;
-    public static final String shorLinkExists1;
-    public static final String shorLinkExists2;
-
-    static {
-        welcomeMessage = "Hi! Please, add url <http://mysite.com> or <https://mysite.com> and/or keyword.\nThe keyword should be alphanumeric and contain 5 symbols:";
-        argumentValid = "The arguments should be 1 or 2";
-        urlValid = "The url is not valid. Please, add valid url like http://mysite.com";
-        keywordValid = "The keyword is not valid. It should be alphanumeric and contain 5 symbols";
-        shorLinkExists1 = "The keyword ";
-        shorLinkExists2 = " exists. Please, add unique keyword";
-    }
+    public static final String welcomeMessage = "Hi! Please, add url <http://mysite.com> or <https://mysite.com> and/or keyword.\nThe keyword should be alphanumeric and contain 5 symbols:";
+    public static final String argumentValid = "The arguments should be 1 or 2";
+    public static final String urlValid = "The url is not valid. Please, add valid url like http://mysite.com";
+    public static final String keywordValid = "The keyword is not valid. It should be alphanumeric and contain 5 symbols";
+    public static final String shorLinkExists1 = "The keyword ";
+    public static final String shorLinkExists2 = " exists. Please, add unique keyword";
 
     static public String show(MessageTypes type) {
         switch (type) {
