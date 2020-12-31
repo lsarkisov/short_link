@@ -15,7 +15,7 @@ public class ShortLinkController {
         this.scanner = new Scanner(System.in);
         this.shortLinkModel = new ShortLinkModel();
 
-        ShortLinkMessage.show(MessageTypes.WELCOME_MESSAGE);
+        System.out.println(ShortLinkMessage.show(MessageTypes.WELCOME_MESSAGE));
 
         while (scanner.hasNextLine()) {
             final String[] params = scanner.nextLine().split(" ");
@@ -27,7 +27,7 @@ public class ShortLinkController {
                     getShortLinkWithKeyword(params[0], params[1]);
                     break;
                 default:
-                    ShortLinkMessage.show(MessageTypes.ARGUMENTS_VALID);
+                    System.out.println(ShortLinkMessage.show(MessageTypes.ARGUMENTS_VALID));
             }
         }
     }
@@ -70,7 +70,7 @@ public class ShortLinkController {
 
     public boolean validateUrl(String url) {
         if (!ShortLinkService.isUrlValid(url)) {
-            ShortLinkMessage.show(MessageTypes.URL_VALID);
+            System.out.println(ShortLinkMessage.show(MessageTypes.URL_VALID));
             return false;
         }
         return true;
@@ -78,7 +78,7 @@ public class ShortLinkController {
 
     public boolean validateKeyword(String keyword) {
         if (!ShortLinkService.isKeywordValid(keyword)) {
-            ShortLinkMessage.show(MessageTypes.KEYWORD_VALID);
+            System.out.println(ShortLinkMessage.show(MessageTypes.KEYWORD_VALID));
             return false;
         }
         return true;
@@ -86,7 +86,7 @@ public class ShortLinkController {
 
     public boolean validateIfShortLinkExists(String keyword) {
         if (shortLinkModel.isShortLinkExists(keyword)) {
-            ShortLinkMessage.show(MessageTypes.SHORT_LINK_EXISTS, keyword);
+            System.out.println(ShortLinkMessage.show(MessageTypes.SHORT_LINK_EXISTS, keyword));
             return true;
         }
         return false;
