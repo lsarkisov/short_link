@@ -32,7 +32,7 @@ public class ShortLinkController {
         }
     }
 
-    private void getShortLinkWithNoKeyword(String url) {
+    public void getShortLinkWithNoKeyword(String url) {
         if (url.equals("q")) {
             System.exit(1);
         }
@@ -50,7 +50,7 @@ public class ShortLinkController {
         }
     }
 
-    private void getShortLinkWithKeyword(String url, String keyword) {
+    public void getShortLinkWithKeyword(String url, String keyword) {
         if (validateAll(url, keyword)) {
             final String shortLink = ShortLinkService.genShortLink(keyword);
             shortLinkModel.setShortLink(url, shortLink);
@@ -58,17 +58,17 @@ public class ShortLinkController {
         }
     }
 
-    private boolean validateAll(String url) {
+    public boolean validateAll(String url) {
         return validateUrl(url);
     }
 
-    private boolean validateAll(String url, String keyword) {
+    public boolean validateAll(String url, String keyword) {
         return validateUrl(url)
                 && validateKeyword(keyword)
                 && !validateIfShortLinkExists(keyword);
     }
 
-    private boolean validateUrl(String url) {
+    public boolean validateUrl(String url) {
         if (!ShortLinkService.isUrlValid(url)) {
             ShortLinkMessage.show(MessageTypes.URL_VALID);
             return false;
@@ -76,7 +76,7 @@ public class ShortLinkController {
         return true;
     }
 
-    private boolean validateKeyword(String keyword) {
+    public boolean validateKeyword(String keyword) {
         if (!ShortLinkService.isKeywordValid(keyword)) {
             ShortLinkMessage.show(MessageTypes.KEYWORD_VALID);
             return false;
@@ -84,7 +84,7 @@ public class ShortLinkController {
         return true;
     }
 
-    private boolean validateIfShortLinkExists(String keyword) {
+    public boolean validateIfShortLinkExists(String keyword) {
         if (shortLinkModel.isShortLinkExists(keyword)) {
             ShortLinkMessage.show(MessageTypes.SHORT_LINK_EXISTS, keyword);
             return true;

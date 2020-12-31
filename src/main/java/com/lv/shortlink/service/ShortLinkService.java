@@ -7,12 +7,12 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 public class ShortLinkService {
-    static private final String host = "https://short.en/";
-    static private int leftLimit = 48;
-    static private int rightLimit = 122;
-    static private int targetStringLength = 5;
+    static public final String host = "https://short.en/";
+    static public final int leftLimit = 48;
+    static public final int rightLimit = 122;
+    static public final int targetStringLength = 5;
+    static public final Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]*$");
     static private Random random = new Random();
-    static private Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]*$");
 
     /**
      * Generates short link with alphanumeric path if
