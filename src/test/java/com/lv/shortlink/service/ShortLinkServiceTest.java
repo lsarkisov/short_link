@@ -9,7 +9,7 @@ class ShortLinkServiceTest {
     static String wrongUrl;
 
     @BeforeAll
-    public static void setup() {
+    public static void init() {
         url = "https://mysite.com";
         wrongUrl = "wrong url";
     }

@@ -13,7 +13,7 @@ class ShortLinkMessageTest {
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeEach
-    public void setUp() {
+    public void init() {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
