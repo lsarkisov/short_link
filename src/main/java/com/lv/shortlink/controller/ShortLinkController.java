@@ -42,11 +42,10 @@ public class ShortLinkController {
             System.exit(1);
         }
 
-        final String urlExists = shortLinkModel.isUrlExists(url);
+        final String userLink = shortLinkModel.isShortLink(url);
 
-        if (!urlExists.isEmpty()) {
-            System.out.println(urlExists);
-
+        if (!userLink.isEmpty()) {
+            System.out.println(userLink);
         } else {
             final String keyword = ShortLinkService.generateKeyword();
 
