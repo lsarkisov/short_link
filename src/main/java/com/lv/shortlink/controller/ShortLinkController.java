@@ -42,16 +42,23 @@ public class ShortLinkController {
             System.exit(1);
         }
 
-        final String keyword = ShortLinkService.generateKeyword();
+        final String urlExists = shortLinkModel.isUrlExists(url);
 
-        if (validateIsShortLinkExists(ShortLinkService.host + keyword)) {
-            getShortLinkWithNoKeyword(url);
-        }
+        if (!urlExists.isEmpty()) {
+            System.out.println(urlExists);
 
-        if (validateUrl(url)) {
-            final String shortLink = ShortLinkService.genShortLink(keyword);
-            shortLinkModel.setShortLink(url, shortLink);
-            System.out.println(shortLink);
+        } else {
+            final String keyword = ShortLinkService.generateKeyword();
+
+            if (validateIsShortLinkExists(ShortLinkService.host + keyword)) {
+                getShortLinkWithNoKeyword(url);
+            }
+
+            if (validateUrl(url)) {
+                final String shortLink = ShortLinkService.genShortLink(keyword);
+                shortLinkModel.setShortLink(url, shortLink);
+                System.out.println(shortLink);
+            }
         }
     }
 

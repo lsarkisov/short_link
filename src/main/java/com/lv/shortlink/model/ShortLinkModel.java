@@ -44,4 +44,19 @@ public class ShortLinkModel {
     public boolean isShortLinkExists(String newLink) {
         return shortLink.containsValue(newLink);
     }
+
+    /**
+     * Return real link if short link exists in store
+     *
+     * @param url String short link
+     * @return String real link or empty string
+     */
+    public String isUrlExists(String url) {
+        for (var s : shortLink.entrySet()) {
+            if (s.getValue().equals(url)) {
+                return s.getKey();
+            }
+        }
+        return "";
+    }
 }
