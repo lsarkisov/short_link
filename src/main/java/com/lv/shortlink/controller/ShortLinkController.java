@@ -21,10 +21,10 @@ public class ShortLinkController {
             final String[] params = scanner.nextLine().split(" ");
             switch (params.length) {
                 case 1:
-                    getShortLinkWithNoKeyword(params[0]);
+                    getShortLink(params[0], null);
                     break;
                 case 2:
-                    getShortLinkWithKeyword(params[0], params[1]);
+                    getShortLink(params[0], params[1]);
                     break;
                 default:
                     System.out.println(ShortLinkMessage.show(MessageTypes.ARGUMENTS_VALID));
@@ -37,7 +37,7 @@ public class ShortLinkController {
      *
      * @param url provided by user that will be converted
      */
-    public void getShortLinkWithNoKeyword(String url) {
+    public void getShortLink(String url, String keyword) {
         final String userLink = shortLinkModel.isShortLink(url);
 
         /**
@@ -55,35 +55,39 @@ public class ShortLinkController {
 
         }
         /**
+         * if keyword provided by user
+         */
+        else if (keyword != null) {
+            if (validateAll(url, keyword)) {
+                showShortLink(url, keyword);
+            }
+        }
+        /**
          * if a user link doesn't exist in store provide new short link
          */
         else {
-            final String keyword = ShortLinkService.generateKeyword();
+            final String kw = ShortLinkService.generateKeyword();
 
-            if (validateIsShortLinkExists(ShortLinkService.host + keyword)) {
-                getShortLinkWithNoKeyword(url);
+            if (validateIsShortLinkExists(ShortLinkService.host + kw)) {
+                getShortLink(url, null);
             }
 
             if (validateUrl(url)) {
-                final String shortLink = ShortLinkService.genShortLink(keyword);
-                shortLinkModel.setShortLink(url, shortLink);
-                System.out.println(shortLink);
+                showShortLink(url, kw);
             }
         }
     }
 
     /**
-     * Generate short link with keyword provided by user
+     * Show short link
      *
-     * @param url     provided by user that will be converted
-     * @param keyword provided by user that will be used for short link path
+     * @param url string url provided by user
+     * @param keyword string keyword provided by user (optional)
      */
-    public void getShortLinkWithKeyword(String url, String keyword) {
-        if (validateAll(url, keyword)) {
-            final String shortLink = ShortLinkService.genShortLink(keyword);
-            shortLinkModel.setShortLink(url, shortLink);
-            System.out.println(shortLink);
-        }
+    public void showShortLink(String url, String keyword) {
+        final String shortLink = ShortLinkService.genShortLink(keyword);
+        shortLinkModel.setShortLink(url, shortLink);
+        System.out.println(shortLink);
     }
 
     /**
