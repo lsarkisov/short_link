@@ -92,13 +92,4 @@ class ShortLinkControllerTest {
         Assertions.assertTrue(getOutput().indexOf(ShortLinkService.host) > -1);
     }
 
-    @Test
-    void keywordValidIfKeywordUniqueTest() {
-        provideInput(url + " abc12");
-        provideInput(url + " abc13");
-        new ShortLinkController();
-
-        //Assertions.assertEquals("abc", getOutput().toString());
-    }
-
 }
