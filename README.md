@@ -15,7 +15,8 @@
 
 3.  **Requirements.**
 
-    For running this project you need to use Java 13 and Maven
+    For running this project you need to use Java 13 and Maven.<br> 
     Open your terminal and run in project root
-    ```mvn install``` for first time or ```mvn clean install``` for all other cases.
-    After that run ```java -cp target/short_link-1.0-SNAPSHOT.jar com.lv.Application```
+    ```mvn package``` for first time or ```mvn clean package``` for all other cases.<br>
+    After that run ```java -cp target/short_link-1.0-SNAPSHOT.jar com.lv.Application```<br>
+    Or use your favorite IDE.
