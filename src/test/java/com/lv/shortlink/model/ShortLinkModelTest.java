@@ -23,8 +23,6 @@ class ShortLinkModelTest {
 
         final String s = shortLinkModel.getShortLinks().get(url);
         Assertions.assertEquals(s, keyword);
-
-        Assertions.assertTrue(shortLinkModel.isShortLinkExists(url));
     }
 
 }
