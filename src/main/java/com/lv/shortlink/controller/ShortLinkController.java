@@ -38,15 +38,26 @@ public class ShortLinkController {
      * @param url provided by user that will be converted
      */
     public void getShortLinkWithNoKeyword(String url) {
-        if (url.equals("q")) {
-            System.exit(1);
-        }
-
         final String userLink = shortLinkModel.isShortLink(url);
 
+        /**
+         * if short link exists return user link
+         */
         if (!userLink.isEmpty()) {
             System.out.println(userLink);
-        } else {
+
+        }
+        /**
+         * if user quit the program
+         */
+        else if (url.equals("q")) {
+            System.exit(1);
+
+        }
+        /**
+         * if user link doesn't exist in store provide new short link
+         */
+        else {
             final String keyword = ShortLinkService.generateKeyword();
 
             if (validateIsShortLinkExists(ShortLinkService.host + keyword)) {
@@ -64,7 +75,7 @@ public class ShortLinkController {
     /**
      * Generate short link with keyword provided by user
      *
-     * @param url provided by user that will be converted
+     * @param url     provided by user that will be converted
      * @param keyword provided by user that will be used for short link path
      */
     public void getShortLinkWithKeyword(String url, String keyword) {
