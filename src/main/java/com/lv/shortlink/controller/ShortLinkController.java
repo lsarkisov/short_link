@@ -55,7 +55,7 @@ public class ShortLinkController {
 
         }
         /**
-         * if keyword provided by user
+         * if a keyword provided by user
          */
         else if (keyword != null) {
             if (validateAll(url, keyword)) {
@@ -68,6 +68,9 @@ public class ShortLinkController {
         else {
             final String kw = ShortLinkService.generateKeyword();
 
+            /**
+             * if generated short link is not unique
+             */
             if (validateIsShortLinkExists(ShortLinkService.host + kw)) {
                 getShortLink(url, null);
             }
