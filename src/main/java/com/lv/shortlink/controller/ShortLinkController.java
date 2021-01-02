@@ -48,14 +48,14 @@ public class ShortLinkController {
 
         }
         /**
-         * if user quit the program
+         * if a user quit the program
          */
         else if (url.equals("q")) {
             System.exit(1);
 
         }
         /**
-         * if user link doesn't exist in store provide new short link
+         * if a user link doesn't exist in store provide new short link
          */
         else {
             final String keyword = ShortLinkService.generateKeyword();
