@@ -39,7 +39,7 @@ public class ShortLinkController {
 
         final String keyword = ShortLinkService.generateKeyword();
 
-        if (validateIfShortLinkExists(keyword)) {
+        if (validateIsShortLinkExists(keyword)) {
             getShortLinkWithNoKeyword(url);
         }
 
@@ -65,7 +65,7 @@ public class ShortLinkController {
     public boolean validateAll(String url, String keyword) {
         return validateUrl(url)
                 && validateKeyword(keyword)
-                && !validateIfShortLinkExists(keyword);
+                && !validateIsShortLinkExists(keyword);
     }
 
     public boolean validateUrl(String url) {
@@ -84,7 +84,7 @@ public class ShortLinkController {
         return true;
     }
 
-    public boolean validateIfShortLinkExists(String keyword) {
+    public boolean validateIsShortLinkExists(String keyword) {
         if (shortLinkModel.isShortLinkExists(keyword)) {
             System.out.println(ShortLinkMessage.show(MessageTypes.SHORT_LINK_EXISTS, keyword));
             return true;
