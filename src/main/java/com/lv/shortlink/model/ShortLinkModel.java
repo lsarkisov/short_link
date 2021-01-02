@@ -42,6 +42,6 @@ public class ShortLinkModel {
      * @return boolean  is short link exists
      */
     public boolean isShortLinkExists(String newLink) {
-        return shortLink.get(newLink) != null;
+        return shortLink.containsValue(newLink);
     }
 }

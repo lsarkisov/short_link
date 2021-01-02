@@ -77,6 +77,7 @@ class ShortLinkControllerTest {
         new ShortLinkController();
         Assertions.assertTrue(getOutput().indexOf(ShortLinkMessage.keywordValid) > -1);
     }
+
     @Test
     void keywordValidWithWrongNumberOfArgumentsTest() {
         provideInput(url + " 1");
@@ -89,6 +90,15 @@ class ShortLinkControllerTest {
         provideInput(url + " abc12");
         new ShortLinkController();
         Assertions.assertTrue(getOutput().indexOf(ShortLinkService.host) > -1);
+    }
+
+    @Test
+    void keywordValidIfKeywordUniqueTest() {
+        provideInput(url + " abc12");
+        provideInput(url + " abc13");
+        new ShortLinkController();
+
+        //Assertions.assertEquals("abc", getOutput().toString());
     }
 
 }

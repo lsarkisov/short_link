@@ -44,11 +44,11 @@ public class ShortLinkController {
 
         final String keyword = ShortLinkService.generateKeyword();
 
-        if (validateIsShortLinkExists(keyword)) {
+        if (validateIsShortLinkExists(ShortLinkService.host + keyword)) {
             getShortLinkWithNoKeyword(url);
         }
 
-        if (validateAll(url)) {
+        if (validateUrl(url)) {
             final String shortLink = ShortLinkService.genShortLink(keyword);
             shortLinkModel.setShortLink(url, shortLink);
             System.out.println(shortLink);
@@ -128,7 +128,7 @@ public class ShortLinkController {
      * @return boolean
      */
     public boolean validateIsShortLinkExists(String keyword) {
-        if (shortLinkModel.isShortLinkExists(keyword)) {
+        if (shortLinkModel.isShortLinkExists(ShortLinkService.host + keyword)) {
             System.out.println(ShortLinkMessage.show(MessageTypes.SHORT_LINK_EXISTS, keyword));
             return true;
         }
