@@ -91,6 +91,7 @@ public class ShortLinkController {
 
         final String shortLink = ShortLinkService.genShortLink(k);
         shortLinkModel.setShortLink(url, shortLink);
+
         System.out.println(shortLink);
     }
 
