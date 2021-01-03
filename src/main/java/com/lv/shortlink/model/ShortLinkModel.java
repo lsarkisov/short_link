@@ -51,7 +51,7 @@ public class ShortLinkModel {
      * @param url String short link
      * @return String user link or empty string
      */
-    public String isShortLink(String url) {
+    public String getUserLink(String url) {
         for (var s : shortLink.entrySet()) {
             if (s.getValue().equals(url)) {
                 return s.getKey();

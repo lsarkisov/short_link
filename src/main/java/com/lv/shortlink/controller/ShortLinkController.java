@@ -38,7 +38,7 @@ public class ShortLinkController {
      * @param url provided by user that will be converted
      */
     public void getShortLink(String url, String keyword) {
-        final String userLink = shortLinkModel.isShortLink(url);
+        final String userLink = shortLinkModel.getUserLink(url);
 
         /**
          * if short link exists return user link
