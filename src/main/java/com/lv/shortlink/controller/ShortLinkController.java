@@ -66,17 +66,8 @@ public class ShortLinkController {
          * if a user link doesn't exist in store provide new short link
          */
         else {
-            final String kw = ShortLinkService.generateKeyword();
-
-            /**
-             * if generated short link is not unique
-             */
-            if (validateIsShortLinkExists(ShortLinkService.host + kw)) {
-                getShortLink(url, null);
-            }
-
             if (validateUrl(url)) {
-                showShortLink(url, kw);
+                showShortLink(url, null);
             }
         }
     }
@@ -88,7 +79,17 @@ public class ShortLinkController {
      * @param keyword string keyword provided by user (optional)
      */
     public void showShortLink(String url, String keyword) {
-        final String shortLink = ShortLinkService.genShortLink(keyword);
+        String k = keyword;
+
+        if (k == null) {
+            k = ShortLinkService.generateKeyword();
+
+            if (validateIsShortLinkExists(ShortLinkService.host + k)) {
+                getShortLink(url, k);
+            }
+        }
+
+        final String shortLink = ShortLinkService.genShortLink(k);
         shortLinkModel.setShortLink(url, shortLink);
         System.out.println(shortLink);
     }
